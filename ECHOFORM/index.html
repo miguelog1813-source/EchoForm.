@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a0c12">
+  <meta name="description" content="ECHOFORM — laboratório de sons sintéticos em evolução.">
+  <title>ECHOFORM — Synthetic Sound Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">E</span><span>ECHOFORM<small>SYNTHETIC SOUND LAB</small></span></a>
+    <div class="status"><i id="statusDot"></i><span id="statusText">AUDIO DORMANT</span></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> PROCEDURAL AUDIO / EXPERIMENT 001</div>
+      <h1>Sound that <em>evolves.</em></h1>
+      <p class="intro">A machine-made organism of tones, breath-like noise and shifting formants. No human voice recordings. Just synthesis, mutation, and your ears.</p>
+    </section>
+
+    <section class="lab-grid">
+      <div class="panel sound-panel">
+        <div class="panel-head"><div><span class="micro">CURRENT SPECIMEN</span><h2 id="specimenName">FORM-0001</h2></div><span class="live-pill" id="livePill">STANDBY</span></div>
+        <div class="visualizer-wrap">
+          <canvas id="visualizer" aria-label="Visualização de áudio"></canvas>
+          <div class="visual-label"><span>WAVEFORM / LIVE</span><span id="freqReadout">— Hz</span></div>
+        </div>
+        <div class="metrics">
+          <div><span>GENERATION</span><strong id="generation">000</strong></div>
+          <div><span>COMPLEXITY</span><strong id="complexity">0.00</strong></div>
+          <div><span>VARIATION</span><strong id="variation">0.00</strong></div>
+        </div>
+        <div class="controls">
+          <button class="button primary" id="startBtn"><span class="play-icon">▶</span> Start audio</button>
+          <button class="button" id="evolveBtn">↗ Evolve</button>
+          <button class="button icon-button" id="randomBtn" title="Criar novo genoma" aria-label="Criar novo genoma">⤨</button>
+        </div>
+        <div class="control-row">
+          <label for="mutation">MUTATION RATE <output id="mutationValue">24%</output></label>
+          <input id="mutation" type="range" min="5" max="70" value="24">
+        </div>
+        <div class="control-row">
+          <label for="evolveSpeed">AUTO-EVOLVE <output id="speedValue">8 sec</output></label>
+          <input id="evolveSpeed" type="range" min="3" max="20" value="8">
+          <button class="text-button" id="autoBtn">ENABLE AUTO</button>
+        </div>
+      </div>
+
+      <aside class="panel inspector">
+        <div class="panel-head"><div><span class="micro">GENOME INSPECTOR</span><h2>Traits</h2></div><span class="tiny-icon">⌘</span></div>
+        <p class="muted">The sound is assembled from a small set of mutable parameters. Evolving changes the balance, not a recording.</p>
+        <div class="trait-list">
+          <div class="trait"><div><span>Fundamental</span><strong id="fundamental">118 Hz</strong></div><div class="bar"><i id="fundamentalBar"></i></div></div>
+          <div class="trait"><div><span>Formant A</span><strong id="formantA">420 Hz</strong></div><div class="bar"><i id="formantABar"></i></div></div>
+          <div class="trait"><div><span>Formant B</span><strong id="formantB">1450 Hz</strong></div><div class="bar"><i id="formantBBar"></i></div></div>
+          <div class="trait"><div><span>Air / Noise</span><strong id="air">18%</strong></div><div class="bar"><i id="airBar"></i></div></div>
+          <div class="trait"><div><span>Pitch motion</span><strong id="motion">0.7 Hz</strong></div><div class="bar"><i id="motionBar"></i></div></div>
+          <div class="trait"><div><span>Articulation</span><strong id="articulation">0.42</strong></div><div class="bar"><i id="articulationBar"></i></div></div>
+        </div>
+        <div class="note"><span class="note-icon">✳</span><p><strong>Listening note</strong><br>Use headphones at a comfortable volume. These are synthetic, voice-like textures—not real speech and not language recognition.</p></div>
+        <div class="save-row"><button class="button secondary" id="saveBtn">＋ Save snapshot</button><button class="button secondary" id="exportBtn">↓ Export genome</button></div>
+      </aside>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading"><div><span class="micro">LOCAL MEMORY</span><h2>Specimen archive</h2></div><button class="text-button" id="clearBtn">CLEAR ARCHIVE</button></div>
+      <div id="archive" class="archive"><div class="empty-state">No snapshots yet. Save a sound you want to keep.</div></div>
+    </section>
+    <footer><span>ECHOFORM / BUILD 001</span><span>GENERATED LOCALLY · NO VOICE DATA · NO TRACKING</span></footer>
+  </main>
+  <script src="src/genome.js"></script>
+  <script src="src/audio-engine.js"></script>
+  <script src="src/storage.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
